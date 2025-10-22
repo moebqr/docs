@@ -1,29 +1,25 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "Servable",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
-    "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
-    }
+    "primary": "#253CC5", 
+    "light": "#3E66EF",
+    "dark": "#3E66EF"
   },
   "topbarLinks": [
     {
-      "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "name": "Contact Us",
+      "url": "mailto:support@servable.dev"
     }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "name": "Visit Our Platform",
+    "url": "https://platform.servable.dev"
   },
   "tabs": [
     {
@@ -31,61 +27,44 @@
       "url": "api-reference"
     }
   ],
-  "anchors": [
-    {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    },
-    {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
-    }
-  ],
   "navigation": [
     {
-      "group": "Get Started",
+      "group": "Getting Started with Servable",
       "pages": [
         "introduction",
-        "quickstart",
-        "development"
+        "quickstart"
       ]
     },
     {
-      "group": "Essentials",
+      "group": "Core Features",
       "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
+        "features/Data-Agent",
+        "features/LLM-playground",
+        "features/AI-gateway"
       ]
     },
     {
-      "group": "API Documentation",
+      "group": "Guides",
       "pages": [
-        "api-reference/introduction"
+        "guides/dataset-creation",
+        "guides/model-fine-tuning",
+        "guides/api-integration",
+        "guides/deployment"
       ]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "API Reference",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "api-reference/introduction",
+        "api-reference/data-agent",
+        "api-reference/llm-playground",
+        "api-reference/ai-gateway"
       ]
     }
   ],
   "footerSocials": {
-    "x": "https://x.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://linkedin.com/company/mintlify"
+    "x": "https://x.com/servable",
+    "github": "https://github.com/servable",
+    "linkedin": "https://linkedin.com/company/servable"
   }
 }

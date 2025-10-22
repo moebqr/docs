@@ -1,86 +1,136 @@
 ---
-title: 'Quickstart'
-description: 'Start building awesome documentation in under 5 minutes'
+title: "Quickstart"
+description: "Get up and running with Servable in minutes"
 ---
 
-## Setup your development
+## Prerequisites
 
-Learn how to update your docs locally and deploy them to the public.
+Before you begin, make sure you have:
 
-### Edit and preview
+- A Servable account ([Sign up here](https://servable.dev))
+- Node.js 18+ installed
+- Basic knowledge of AI/ML concepts
 
-<AccordionGroup>
-  <Accordion icon="github" title="Clone your docs locally">
-    During the onboarding process, we created a repository on your Github with
-    your docs content. You can find this repository on our
-    [dashboard](https://dashboard.mintlify.com). To clone the repository
-    locally, follow these
-    [instructions](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
-    in your terminal.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Preview changes">
-    Previewing helps you make sure your changes look as intended. We built a
-    command line interface to render these changes locally. 1. Install the
-    [Mintlify CLI](https://www.npmjs.com/package/mintlify) to preview the
-    documentation changes locally with this command: ``` npm i -g mintlify ```
-    2. Run the following command at the root of your documentation (where
-    `mint.json` is): ``` mintlify dev ```
-  </Accordion>
-</AccordionGroup>
+## Installation
 
-### Deploy your changes
+Install the Servable CLI to get started:
 
-<AccordionGroup>
+```bash
+npm install -g @servable/cli
+```
 
-<Accordion icon="message-bot" title="Install our Github app">
-  Our Github app automatically deploys your changes to your docs site, so you
-  don't need to manage deployments yourself. You can find the link to install on
-  your [dashboard](https://dashboard.mintlify.com). Once the bot has been
-  successfully installed, there should be a check mark next to the commit hash
-  of the repo.
-</Accordion>
-<Accordion icon="rocket" title="Push your changes">
-  [Commit and push your changes to
-  Git](https://docs.github.com/en/get-started/using-git/pushing-commits-to-a-remote-repository#about-git-push)
-  for your changes to update in your docs site. If you push and don't see that
-  the Github app successfully deployed your changes, you can also manually
-  update your docs through our [dashboard](https://dashboard.mintlify.com).
-</Accordion>
+## Authentication
 
-</AccordionGroup>
+Authenticate with your Servable account:
 
-## Update your docs
+```bash
+servable auth login
+```
 
-Add content directly in your files with MDX syntax and React components. You can use any of our components, or even build your own.
+This will open your browser to complete the authentication process.
 
-<CardGroup>
+## Your First Project
 
-<Card title="Style Your Docs" icon="paintbrush" href="/settings/global">
-  Add flair to your docs with personalized branding.
-</Card>
+Create a new project:
 
-<Card
-  title="Add API Endpoints"
-  icon="square-code"
-  href="/api-playground/configuration"
->
-  Implement your OpenAPI spec and enable API user interaction.
-</Card>
+```bash
+servable init my-ai-project
+cd my-ai-project
+```
 
-<Card
-  title="Integrate Analytics"
-  icon="chart-mixed"
-  href="/analytics/supported-integrations"
->
-  Draw insights from user interactions with your documentation.
-</Card>
+## Generate Your First Dataset
 
-<Card
-  title="Host on a Custom Domain"
-  icon="browser"
-  href="/settings/custom-domain/subdomain"
->
-  Keep your docs on your own website's subdomain.
-</Card>
+Use the Data Agent to create a training dataset:
 
+```bash
+servable data-agent create \
+  --task "sentiment-analysis" \
+  --industry "e-commerce" \
+  --language "en" \
+  --keywords "product reviews, customer feedback" \
+  --output ./datasets/sentiment-data.json
+```
+
+## Fine-tune a Model
+
+Use the LLM Playground to fine-tune a model:
+
+```bash
+servable llm-playground fine-tune \
+  --model "gpt-3.5-turbo" \
+  --dataset ./datasets/sentiment-data.json \
+  --output ./models/sentiment-classifier
+```
+
+## Deploy Your Model
+
+Deploy your fine-tuned model:
+
+```bash
+servable deploy \
+  --model ./models/sentiment-classifier \
+  --name "my-sentiment-classifier"
+```
+
+## Test Your Deployment
+
+Test your deployed model using the AI Gateway:
+
+```bash
+curl -X POST https://api.servable.dev/v1/models/my-sentiment-classifier/predict \
+  -H "Authorization: Bearer $SERVABLE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "input": "This product is amazing! I love it.",
+    "parameters": {
+      "temperature": 0.1
+    }
+  }'
+```
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Explore Data Agent"
+    icon="database"
+    href="/features/data-agent"
+  >
+    Learn how to create high-quality datasets for your AI models
+  </Card>
+  <Card
+    title="LLM Playground"
+    icon="flask"
+    href="/features/llm-playground"
+  >
+    Discover advanced model fine-tuning and evaluation features
+  </Card>
+  <Card
+    title="AI Gateway"
+    icon="network-wired"
+    href="/features/ai-gateway"
+  >
+    Integrate with multiple LLM providers through our unified API
+  </Card>
+  <Card
+    title="API Reference"
+    icon="code"
+    href="/api-reference/introduction"
+  >
+    Explore our comprehensive API documentation
+  </Card>
 </CardGroup>
+
+## Common Issues
+
+<AccordionGroup>
+  <Accordion title="Authentication Failed">
+    Make sure you're logged in with `servable auth login` and your account is active.
+  </Accordion>
+  <Accordion title="Dataset Generation Taking Too Long">
+    Large datasets can take time. Check the status with `servable data-agent status <job-id>`.
+  </Accordion>
+  <Accordion title="Model Deployment Failed">
+    Ensure your model files are valid and you have sufficient quota. Check logs with `servable logs <deployment-id>`.
+  </Accordion>
+</AccordionGroup>
